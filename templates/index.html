@@ -28,7 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#search">Search</a></li>
                         <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
                     </ul>
                 </div>
@@ -41,7 +41,7 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">StillSeries</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Crush your boredom.</h2>
-                        <a class="btn btn-primary" href="#about">Start Searching</a>
+                        <a class="btn btn-primary" href="#search">Start Searching</a>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
 
 
         <!-- Signup-->
-        <section class="signup-section" id="signup">
+        <section class="signup-section" id="search">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
@@ -162,14 +162,30 @@
                                           <br>
                                           <br>
                                           </form>
+
+                                        </div>
+
                                 </div>
                             </div>
                         </div>
+
+                        <div class="table-responsive bg-white text-dark text-center rounded">
+                          <br>
+                            <table id="results" class="table">
+                              <thead>
+                                <tr>
+                                  <th>   <h1 class="h4 text-gray-900 mb-4">Show Title </h1> </th>
+                                </tr>
+                              </thead>
+                              <tbody></tbody>
+                            </table>
+                          </div>
                     </div>
                   </div>
                 </div>
                 </div>
 
+                <br>
 
         <!-- Contact-->
         <section class="contact-section bg-black">
@@ -249,6 +265,18 @@
                     .done(function (response) {
                       console.log(response);
 
+                      for (var show of response)
+                       {
+                           //fill in the show title table
+                           var markup = `<tr>
+                             <td class="align-middle">${show}</td>
+                             </tr>`;
+                             $("#results tbody").append(markup);
+
+
+
+
+                       }
 
                     })
                     .fail(function (response) {
